@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clear_stack.c                                   :+:      :+:    :+:   */
+/*   ft_stack_rotate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: franaivo <franaivo@student.42antananarivo  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:01:26 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/13 12:01:31 by franaivo         ###   ########.fr       */
+/*   Created: 2024/05/13 11:53:19 by franaivo          #+#    #+#             */
+/*   Updated: 2024/05/13 15:38:37 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-void	ft_clear_stack(t_stack **stack)
+void	ft_stack_rotate(t_stack *stack)
 {
-	ft_lstclear(&(*stack)->head, free);
-	free(*stack);
-	*stack = NULL;
+	t_list	*top;
+
+	top = ft_stack_pop(stack);
+	ft_lstadd_back(&stack->head, top);
 }

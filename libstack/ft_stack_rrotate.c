@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate_reverse_stack.c                          :+:      :+:    :+:   */
+/*   ft_stack_rrotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: franaivo <franaivo@student.42antananarivo  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:54:27 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/13 11:54:29 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:38:37 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-void	ft_rotate_reverse_stack(t_stack *stack)
+void	ft_stack_rotate_reverse(t_stack *stack)
 {
 	t_list	*temp;
 	t_list	*last;
