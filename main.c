@@ -72,7 +72,7 @@ void ft_stack_sort_n(t_stack* stack_a , t_stack * stack_b , t_size_t n , int inv
   }
 }
 
-void ft_stack_merge_n(t_stack* stack_a , t_stack * stack_b , t_size_t s_a , t_size_t s_b , int inverse)
+void ft_stack_merge_n(t_stack* stack_a , t_stack * stack_b , t_size_t s_a , t_size_t s_b)
 {
   
 }
