@@ -1,19 +1,4 @@
-int find_max_index(t_stack *stack) {
-    t_list *node = stack->head;
-    int max_num = *(int *)(node->content);
-    int max_index = 0;
-    int index = 0;
 
-    while (node) {
-        if (*(int *)(node->content) > max_num) {
-            max_num = *(int *)(node->content);
-            max_index = index;
-        }
-        node = node->next;
-        index++;
-    }
-    return max_index;
-}
 
 int find_nearest_smaller_index(t_stack *stack, int n) {
     t_list *node = stack->head;
@@ -47,19 +32,7 @@ int ft_find_small_nearest(t_stack *stack, int n) {
     }
 }
 
-void ft_stack_sort_three(t_stack *stack_a) {
-    t_list *max;
 
-    if (stack_a->size <= 1 || stack_a->size > 3)
-        return;
-    max = ft_stack_max(stack_a);
-    if (max == stack_a->head)
-        ra(stack_a);
-    else if (stack_a->size > 2 && (max == stack_a->head->next))
-        rra(stack_a);
-    if ((*(int *) (stack_a->head->content) > *(int *)(stack_a->head->next->content)))
-        sa(stack_a);
-}
 
 void ft_stack_sort(t_stack *stack_a, t_stack *stack_b) {
 
