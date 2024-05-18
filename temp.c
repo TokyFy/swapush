@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   temp.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/16 11:08:29 by franaivo          #+#    #+#             */
+/*   Updated: 2024/05/18 09:38:54 by franaivo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 
 int find_nearest_smaller_index(t_stack *stack, int n) {
@@ -34,6 +46,7 @@ int ft_find_small_nearest(t_stack *stack, int n) {
 
 
 
+
 void ft_stack_sort(t_stack *stack_a, t_stack *stack_b) {
 
   int cheapest_a = 0;
@@ -51,6 +64,31 @@ void ft_stack_sort(t_stack *stack_a, t_stack *stack_b) {
     index++;
   }
 
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Usage: %s <numbers>\n", argv[0]);
+        return 1;
+    }
+
+    t_stack *stack_b;
+    t_stack *stack_a;
+
+    stack_b = ft_stack_new();
+    stack_a = ft_stack_new();
+
+    for (int i = argc - 1 ; i > 0 ; i--) {
+        int num = atoi(argv[i]);
+        ft_stack_push(stack_a, ft_itov(num));
+    }
+
+    ft_sort_stack(stack_a, stack_b);
+
+    ft_stack_clear(&stack_a);
+    ft_stack_clear(&stack_b);
+
+    return 0;
 }
 
 
