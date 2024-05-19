@@ -3,6 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/13 18:56:01 by franaivo          #+#    #+#             */
+/*   Updated: 2024/05/18 19:01:46 by franaivo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stack_pop.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: franaivo <franaivo@student.42antananarivo  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 11:51:05 by franaivo          #+#    #+#             */
@@ -21,6 +33,6 @@ t_list	*ft_stack_pop(t_stack *stack)
 	poped = stack->head;
 	stack->head = stack->head->next;
 	poped->next = NULL;
-  stack->size--;
+    stack->size--;
 	return (poped);
 }

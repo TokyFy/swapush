@@ -6,7 +6,7 @@
 /*   By: franaivo <franaivo@student.42antananariv>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:05:29 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/18 12:27:32 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:41:29 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,12 @@ int ft_find_big_nearest(t_stack *stack, int n) {
 }
 
 int calculate_cost(t_stack *stack_a, t_stack *stack_b, int index, int b_index) {
-    return min(stack_a->size - index, index) + min(stack_b->size - b_index, b_index);
+    if(index < stack_a->size / 2 && b_index < stack_b->size / 2)
+        return max(index , b_index);
+    if(index > stack_a->size / 2 && b_index > stack_b->size / 2)
+        return max(stack_a->size - index , stack_b->size - b_index);
+
+    return min(index +  (stack_b->size - b_index) , b_index + (stack_a->size - index));
 }
 
 void ft_find_smallest_cost_move(t_stack *a, t_stack *b, int *a_index, int *b_index) {
@@ -172,12 +177,61 @@ void ft_find_smallest_cost_move(t_stack *a, t_stack *b, int *a_index, int *b_ind
 }
 
 void perform_low_cost_op(t_stack *stack_a, t_stack *stack_b, int index, int b_index) {
-    while (index-- > 0)
-        ra(stack_a);
-    while (b_index-- > 0)
-        rb(stack_b);
-}
+    if(index > stack_a->size / 2 && b_index > stack_b->size / 2)
+    {
+        index = stack_a->size - index;
+        b_index = stack_b->size - b_index;
 
+        while(index > 0 && b_index > 0)
+        {
+            rrr(stack_a , stack_b);
+            index--;
+            b_index--;
+        }
+        while (index-- > 0)
+            rra(stack_a);
+        while (b_index-- > 0)
+            rrb(stack_b);
+        return;
+    }
+
+    if(index < stack_a->size / 2 && b_index < stack_b->size / 2)
+    {
+        while(index > 0 && b_index > 0)
+        {
+            rr(stack_a , stack_b);
+            index--;
+            b_index--;
+        }
+        while (index-- > 0)
+            ra(stack_a);
+        while (b_index-- > 0)
+            rb(stack_b);
+        return;
+    }
+
+    // 1 2 3 4 5
+
+    if(index < stack_a->size / 2)
+    {
+        while (index-- > 0)
+            ra(stack_a);
+    } else{
+        index = stack_a->size - index;
+        while (index-- > 0)
+            rra(stack_a);
+    }
+
+    if(b_index < stack_b->size / 2)
+    {
+        while (b_index-- > 0)
+            rb(stack_b);
+    } else{
+        b_index = stack_b->size - b_index;
+        while (b_index-- > 0)
+            rrb(stack_b);
+    }
+}
 
 void ft_pre_sort_stack(t_stack *a, t_stack *b) {
     int index_a = 0;
@@ -206,22 +260,22 @@ void ft_sort_stack(t_stack *a, t_stack *b) {
 
     t_list *node = b->head;
 
-//    while (node) {
-//        node = b->head;
-//        if (!node)
-//            break;
-//        temp = ft_find_big_nearest(a, *(int *) (node->content));
-//
-//        if (temp < a->size / 2) {
-//            while (temp-- > 0)
-//                ra(a);
-//        } else {
-//            temp = a->size - temp;
-//            while (temp-- > 0)
-//                rra(a);
-//        }
-//        pa(a, b);
-//    }
+    while (node) {
+        node = b->head;
+        if (!node)
+            break;
+        temp = ft_find_big_nearest(a, *(int *) (node->content));
+
+        if (temp < a->size / 2) {
+            while (temp-- > 0)
+                ra(a);
+        } else {
+            temp = a->size - temp;
+            while (temp-- > 0)
+                rra(a);
+        }
+        pa(a, b);
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -242,7 +296,6 @@ int main(int argc, char *argv[]) {
     }
 
     ft_sort_stack(stack_a, stack_b);
-    ft_stack_print(stack_b);
 
     ft_stack_clear(&stack_a);
     ft_stack_clear(&stack_b);
