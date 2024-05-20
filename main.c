@@ -6,7 +6,7 @@
 /*   By: franaivo <franaivo@student.42antananariv>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 11:05:29 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/20 09:33:29 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:08:03 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libstack/libstack.h"
 #include <limits.h>
 #include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
 
 void *ft_itov(int n) {
