@@ -11,30 +11,38 @@
 # **************************************************************************** #
 
 
-SOURCES = ft_stack_clear.c ft_stack_is_empty.c ft_stack_new.c ft_stack_pop.c \
-					ft_stack_print.c ft_stack_push.c ft_stack_rotate.c ft_stack_rrotate.c \
-					ft_stack_utils.c ft_p.c ft_r.c ft_rr.c ft_s.c
+SOURCES = src/ft_stack_find.c src/ft_stack_max.c src/ft_stack_move.c \
+			src/ft_stack_sort.c src/ft_stack_sort_three.c src/utils.c src/push_swap.c
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-NAME = libstack.a
+NAME = push_swap
+LIBFT = libft/libft.a
+LIBSTACK = libstack/libstack.a
 
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME) : $(OBJECTS)
-	@ar rcs $(NAME) $(OBJECTS)
+$(NAME) : $(OBJECTS) $(LIBFT) $(LIBSTACK)
+	$(CC) $(FLAGS) $(OBJECTS) $(LIBSTACK) $(LIBFT) -o $(NAME)
 
 $(OBJECTS) : %.o : %.c
-	@$(CC) -c $(FLAGS) $< -o $@
+	$(CC) -c $(FLAGS) $< -o $@
 
+$(LIBFT) :
+	$(MAKE) bonus -C ./libft/
+
+$(LIBSTACK) :
+	$(MAKE) -C ./libstack/
 
 clean:
-	@rm -f $(OBJECTS) 
+	$(MAKE) fclean -C ./libstack/
+	$(MAKE) fclean -C ./libft/
+	rm -f $(OBJECTS)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 lib : all clean
 
