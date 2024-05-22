@@ -23,27 +23,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        ft_putstr_fd("Error\n" , 1);
-        return 1;
-    }
+int	main(int argc, char *argv[])
+{
+	t_stack	*stack_b;
+	t_stack	*stack_a;
+	int		num;
 
-    t_stack *stack_b;
-    t_stack *stack_a;
-
-    stack_b = ft_stack_new();
-    stack_a = ft_stack_new();
-
-    for (int i = argc - 1; i > 0; i--) {
-        int num = ft_atoi(argv[i]);
-        ft_stack_push(stack_a, ft_itov(num));
-    }
-
-    ft_sort_stack(stack_a, stack_b);
-
-    ft_stack_clear(&stack_a);
-    ft_stack_clear(&stack_b);
-
-    return 0;
+	if (argc < 2)
+	{
+		ft_putstr_fd("Error\n", 1);
+		return (1);
+	}
+	stack_b = ft_stack_new();
+	stack_a = ft_stack_new();
+	for (int i = argc - 1; i > 0; i--)
+	{
+		num = ft_atoi(argv[i]);
+		ft_stack_push(stack_a, ft_itov(num));
+	}
+	ft_sort_stack(stack_a, stack_b);
+	ft_stack_clear(&stack_a);
+	ft_stack_clear(&stack_b);
+	return (0);
 }
