@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:56:01 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/18 19:13:03 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:42:10 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_stack_rotate_reverse(t_stack *stack)
 {
 	t_list	*temp;
 	t_list	*last;
+  
+  if(stack->size <= 1)
+    return;
 
 	temp = stack->head;
 	while (temp->next && temp->next->next)

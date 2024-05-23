@@ -15,7 +15,7 @@ SOURCES = src/ft_stack_find.c src/ft_stack_max.c src/ft_stack_move.c \
 			src/ft_stack_sort.c src/ft_stack_sort_three.c src/utils.c src/push_swap.c
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 NAME = push_swap
 LIBFT = libft/libft.a
 LIBSTACK = libstack/libstack.a
