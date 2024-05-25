@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:09:57 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/20 19:41:36 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/25 09:32:00 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 void	*ft_itov(int n);
 int		min(int a, int b);
 int		max(int a, int b);
+char	*ft_ltoa(long i);
 
 int		find_max_index(t_stack *stack);
 int		find_min_index(t_stack *stack);

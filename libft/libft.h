@@ -6,7 +6,7 @@
 /*   By: franaivo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:23:43 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/13 14:50:45 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:33:04 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char					*ft_strnstr(const char *str, const char *needle,
 							t_size_t len);
 
 int						ft_atoi(const char *str);
+long        	ft_atol(const char *str);
+
 
 void					*ft_calloc(t_size_t nmemb, t_size_t size);
 char					*ft_strdup(char *src);
