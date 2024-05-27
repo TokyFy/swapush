@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:20:56 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/27 10:53:41 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:02:29 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**parse_input(int argc, char *argv[])
 
 	str = ft_strdup("");
 	i = 1;
-	while (i++ < argc)
+	while (i < argc)
 	{
 		if (!ft_is_all_digit(argv[i]))
 			return (free(str), NULL);
@@ -34,13 +34,12 @@ char	**parse_input(int argc, char *argv[])
 		free(temp);
 		free(str);
 		str = temp2;
+		i++;
 	}
 	splited = ft_split(str, ' ');
 	free(str);
 	if (have_duplicate(splited))
-	{
 		return (free_splited(splited), NULL);
-	}
 	return (splited);
 }
 
