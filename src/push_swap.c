@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:20:56 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/25 14:18:57 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/27 08:39:17 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,9 @@ int	main(int argc, char *argv[])
 
 	stack_b = ft_stack_new();
 	stack_a = ft_stack_new();
-
-  (void)(stack_b);
-  (void)(stack_a);
-
 	input = parse_input(argc, argv);
-
   if(!input)
     error = 1 ;
-
   char **ss = input;
   while (!error && *input)
   {
@@ -136,8 +130,6 @@ int	main(int argc, char *argv[])
 	  ft_sort_stack(stack_a, stack_b);
   else
    ft_putstr_fd("Error\n", 2);
-
-  ft_stack_print(stack_a);
 	ft_stack_clear(&stack_a);
 	ft_stack_clear(&stack_b);
   return (error);
