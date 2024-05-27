@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:20:56 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/27 08:39:17 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:53:41 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,122 +15,87 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ft_is_all_digit(char *str)
+char	**parse_input(int argc, char *argv[])
 {
-    int i = 0;
+	char	*str;
+	char	*temp;
+	char	*temp2;
+	char	**splited;
+	int		i;
 
-    if(str[i] == '+' || str[i] == '-')
-      i++;
-
-    if(!str[i])
-      return 0;
-
-    while (str[i])
-    {
-        if (!ft_isdigit(str[i]) && str[i] != ' ')
-            return (0);
-        i++;
-    }
-    return (1);
+	str = ft_strdup("");
+	i = 1;
+	while (i++ < argc)
+	{
+		if (!ft_is_all_digit(argv[i]))
+			return (free(str), NULL);
+		temp = ft_strjoin(str, " ");
+		temp2 = ft_strjoin(temp, argv[i]);
+		free(temp);
+		free(str);
+		str = temp2;
+	}
+	splited = ft_split(str, ' ');
+	free(str);
+	if (have_duplicate(splited))
+	{
+		return (free_splited(splited), NULL);
+	}
+	return (splited);
 }
 
-void free_splited(char **str)
+void	process_input(t_stack *stack_a, char **input, int *error)
 {
-  if(!str)
-    return;
-  char **temp = str;
+	long	n;
 
-  while (*temp) {
-    free(*temp);
-    temp++;
-  }
-
-  free(str);
+	while (!(*error) && *input)
+	{
+		n = ft_atol(*input);
+		if (n > INT_MAX || n < INT_MIN)
+		{
+			*error = 1;
+			break ;
+		}
+		ft_stack_push(stack_a, ft_itov(ft_atoi(*input)));
+		ft_stack_rotate(stack_a);
+		input++;
+	}
 }
 
-int have_duplicate(char **str)
+void	handle_error_and_sort(t_stack *stack_a, t_stack *stack_b, int error)
 {
-  int i = 0;
-  int j = 0;
-
-  while (str[i]) {
-    j = i + 1;
-    while (str[j]) {
-      if(ft_strncmp(str[i], str[j], -1) == 0)
-        return 1;
-      j++;
-    }
-    i++;
-  }
-
-  return 0;
+	if (!error)
+	{
+		ft_sort_stack(stack_a, stack_b);
+	}
+	else
+	{
+		ft_putstr_fd("Error\n", 2);
+	}
 }
-
-char** parse_input(int argc , char *argv[])
-{
-    char *str = ft_strdup("");
-    for (int i = 1 ; i < argc; i++)
-    {
-        if(!ft_is_all_digit(argv[i]))
-        {
-            free(str);
-            return (NULL);
-        }
-        char *temp = ft_strjoin(str , " ");
-        char *temp2 = ft_strjoin(temp , argv[i]);
-        free(temp);
-        free(str);
-        str = temp2;
-    }
-    
-    char ** splited = ft_split(str, ' ');
-    free(str);
-
-    if(have_duplicate(splited))
-    {
-      free_splited(splited);
-      return NULL;
-    }
-
-    return splited;
-}
-
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*stack_b;
 	t_stack	*stack_a;
-	char    **input;
-  int error = 0;
+	t_stack	*stack_b;
+	char	**input;
+	int		error;
 
-	stack_b = ft_stack_new();
 	stack_a = ft_stack_new();
+	stack_b = ft_stack_new();
 	input = parse_input(argc, argv);
-  if(!input)
-    error = 1 ;
-  char **ss = input;
-  while (!error && *input)
-  {
-        long n = ft_atol(*input);
-        
-        if(n > INT_MAX || n < INT_MIN)
-        {
-          printf("OVERFLOWWWW");
-          error = 1;
-          break;
-        }
-
-        ft_stack_push(stack_a, ft_itov(ft_atoi(*input)));
-        ft_stack_rotate(stack_a);
-        input++;
-  }
-
-  free_splited(ss);
-  if(!error)
-	  ft_sort_stack(stack_a, stack_b);
-  else
-   ft_putstr_fd("Error\n", 2);
+	error = 0;
+	if (!input)
+	{
+		error = 1;
+	}
+	else
+	{
+		process_input(stack_a, input, &error);
+		free_splited(input);
+	}
+	handle_error_and_sort(stack_a, stack_b, error);
 	ft_stack_clear(&stack_a);
 	ft_stack_clear(&stack_b);
-  return (error);
+	return (error);
 }

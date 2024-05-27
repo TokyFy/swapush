@@ -33,6 +33,6 @@ t_list	*ft_stack_pop(t_stack *stack)
 	poped = stack->head;
 	stack->head = stack->head->next;
 	poped->next = NULL;
-    stack->size--;
+	stack->size--;
 	return (poped);
 }

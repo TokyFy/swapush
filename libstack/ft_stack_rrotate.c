@@ -28,10 +28,9 @@ void	ft_stack_rotate_reverse(t_stack *stack)
 {
 	t_list	*temp;
 	t_list	*last;
-  
-  if(stack->size <= 1)
-    return;
 
+	if (stack->size <= 1)
+		return ;
 	temp = stack->head;
 	while (temp->next && temp->next->next)
 	{

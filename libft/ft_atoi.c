@@ -43,7 +43,7 @@ int	ft_atoi(const char *str)
 
 long	ft_atol(const char *str)
 {
-	long			value;
+	long		value;
 	int			sign;
 	const char	*c;
 

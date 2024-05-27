@@ -32,7 +32,7 @@ void		ft_stack_rotate(t_stack *stack);
 t_stack		*ft_stack_new(void);
 t_list		*ft_stack_pop(t_stack *stack);
 void		ft_stack_push(t_stack *stack, void *content);
-int		ft_stack_is_empty(t_stack *s);
+int			ft_stack_is_empty(t_stack *s);
 
 void		p(t_stack *a, t_stack *b);
 void		pa(t_stack *a, t_stack *b);

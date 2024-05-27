@@ -6,7 +6,7 @@
 /*   By: franaivo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 08:47:07 by franaivo          #+#    #+#             */
-/*   Updated: 2024/01/25 13:39:19 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:51:51 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 static int	word_count(const char *str, char c);
 static char	*fill_word(const char *str, int start, int end);
 static void	*ft_free(char **strs, int count);
+
+void	*free_splited(char **str)
+{
+	char	**temp;
+
+	if (!str)
+		return (NULL);
+	temp = str;
+	while (*temp)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(str);
+	return (NULL);
+}
 
 char	**ft_split(const char *s, char c)
 {

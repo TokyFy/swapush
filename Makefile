@@ -6,13 +6,14 @@
 #    By: franaivo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 10:07:39 by franaivo          #+#    #+#              #
-#    Updated: 2024/05/13 15:34:27 by franaivo         ###   ########.fr        #
+#    Updated: 2024/05/27 10:57:17 by franaivo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SOURCES = src/ft_stack_find.c src/ft_stack_max.c src/ft_stack_move.c \
-			src/ft_stack_sort.c src/ft_stack_sort_three.c src/utils.c src/push_swap.c
+			src/ft_stack_sort.c src/ft_stack_sort_three.c  src/push_swap.c \
+			src/ft_stack_cost.c src/ft_nbr_utils.c src/ft_str_utils.c
 
 CC = gcc
 FLAGS = -g -Wall -Wextra -Werror

@@ -12,22 +12,25 @@
 
 #include "libstack.h"
 
-void ra(t_stack *a) {
-    if (ft_stack_is_empty(a))
-        return;
-    ft_stack_rotate(a);
-    ft_putendl_fd("ra", 1);
+void	ra(t_stack *a)
+{
+	if (ft_stack_is_empty(a))
+		return ;
+	ft_stack_rotate(a);
+	ft_putendl_fd("ra", 1);
 }
 
-void rb(t_stack *b) {
-    if (ft_stack_is_empty(b))
-        return;
-    ft_stack_rotate(b);
-    ft_putendl_fd("rb", 1);
+void	rb(t_stack *b)
+{
+	if (ft_stack_is_empty(b))
+		return ;
+	ft_stack_rotate(b);
+	ft_putendl_fd("rb", 1);
 }
 
-void rr(t_stack *a, t_stack *b) {
-    ft_stack_rotate(a);
-    ft_stack_rotate(b);
-    ft_putendl_fd("rr", 1);
+void	rr(t_stack *a, t_stack *b)
+{
+	ft_stack_rotate(a);
+	ft_stack_rotate(b);
+	ft_putendl_fd("rr", 1);
 }

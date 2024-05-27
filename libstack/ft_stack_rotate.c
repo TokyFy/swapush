@@ -12,12 +12,15 @@
 
 #include "libstack.h"
 
-void ft_stack_rotate(t_stack *stack) {
-    if (ft_stack_is_empty(stack) || stack->size <= 1) {
-        return;
-    }
-    t_list *top;
-    top = ft_stack_pop(stack);
-    ft_lstadd_back(&stack->head, top);
-    stack->size++;
+void	ft_stack_rotate(t_stack *stack)
+{
+	t_list	*top;
+
+	if (ft_stack_is_empty(stack) || stack->size <= 1)
+	{
+		return ;
+	}
+	top = ft_stack_pop(stack);
+	ft_lstadd_back(&stack->head, top);
+	stack->size++;
 }
