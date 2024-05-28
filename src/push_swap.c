@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:20:56 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/27 11:02:29 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/28 10:05:04 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ char	**parse_input(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_is_all_digit(argv[i]))
-			return (free(str), NULL);
 		temp = ft_strjoin(str, " ");
 		temp2 = ft_strjoin(temp, argv[i]);
 		free(temp);
@@ -49,6 +47,11 @@ void	process_input(t_stack *stack_a, char **input, int *error)
 
 	while (!(*error) && *input)
 	{
+    if (!ft_is_all_digit(*input))
+		{
+			*error = 1;
+			return;
+		}
 		n = ft_atol(*input);
 		if (n > INT_MAX || n < INT_MIN)
 		{
