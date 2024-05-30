@@ -47,10 +47,10 @@ void	process_input(t_stack *stack_a, char **input, int *error)
 
 	while (!(*error) && *input)
 	{
-    if (!ft_is_all_digit(*input))
+		if (!ft_is_all_digit(*input))
 		{
 			*error = 1;
-			return;
+			return ;
 		}
 		n = ft_atol(*input);
 		if (n > INT_MAX || n < INT_MIN)

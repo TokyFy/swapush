@@ -6,7 +6,7 @@
 /*   By: franaivo <tokyfy@outlook.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:19:37 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/27 09:55:34 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/30 08:55:23 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_sort_stack(t_stack *a, t_stack *b)
 	{
 		node = b->head;
 		temp = ft_find_big_nearest(a, *(int *)(node->content));
-		if (temp < a->size / 2)
+		if (temp <= a->size / 2)
 			while (temp-- > 0)
 				ra(a);
 		else

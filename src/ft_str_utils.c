@@ -6,7 +6,7 @@
 /*   By: franaivo <franaivo@student.42antananarivo  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 10:56:00 by franaivo          #+#    #+#             */
-/*   Updated: 2024/05/27 10:56:21 by franaivo         ###   ########.fr       */
+/*   Updated: 2024/05/30 09:41:08 by franaivo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_is_all_digit(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ')
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
